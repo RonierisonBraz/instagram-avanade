@@ -1,4 +1,3 @@
-const { response, request } = require('../app');
 const {Usuario, sequelize} = require('../models');
 
 
