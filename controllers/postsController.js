@@ -1,4 +1,4 @@
-const { Post, sequelize } = require('../models');
+const { Post, Comentario, sequelize } = require('../models');
 
 
 
