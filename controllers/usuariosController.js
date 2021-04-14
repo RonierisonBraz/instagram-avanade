@@ -1,4 +1,4 @@
-const { response } = require('../app');
+const { response, request } = require('../app');
 const {Usuario, sequelize} = require('../models');
 
 
@@ -6,7 +6,8 @@ const {Usuario, sequelize} = require('../models');
 const usuariosController = {
     index: async (request,response) => {
         let usuarios = await Usuario.findAll();
-        return res.json(usuarios);
+
+        return response.json(usuarios);
     },
     create: async (request, response) => {
        let {nome, email, senha} = request.body;
@@ -24,8 +25,19 @@ const usuariosController = {
               nome, 
               email,
               senha
+          },
+          {
+              where: {id}
           }) ;
         return response.json(atualizarUsuario);                                                                                                                                                                                                                    
+    },
+    delete: async (request, response) => {
+        let {id} = request.params;
+
+        const usuarioDeletado = await Usuario.destroy({
+            where: {id}
+        })
+        return response.json(usuarioDeletado);
     }
 }
 
