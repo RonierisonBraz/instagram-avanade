@@ -1,7 +1,6 @@
 const { Post, Comentario, sequelize } = require('../models');
 
 
-
 const postsController = {
     index: async (request, response) => {
         let posts = await Post.findAll();
